@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/st-selenium-full.iml" filepath="$PROJECT_DIR$/.idea/modules/st-selenium-full.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/st-selenium-full_main.iml" filepath="$PROJECT_DIR$/.idea/modules/st-selenium-full_main.iml" group="st-selenium-full" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/st-selenium-full_test.iml" filepath="$PROJECT_DIR$/.idea/modules/st-selenium-full_test.iml" group="st-selenium-full" />
     </modules>
   </component>
 </project>
