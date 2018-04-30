@@ -15,8 +15,8 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
+    public WebDriver driver;
+    public WebDriverWait wait;
 
     @Before
     public void start() {
@@ -28,6 +28,20 @@ public class BaseTest {
     public void stop() {
         driver.quit();
         driver = null;
+    }
+
+
+    boolean isElementPresent(WebDriver driver, By locator) {
+        try {
+            driver.findElement(locator);
+            return true;
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+    }
+
+    boolean areElementsPresent(WebDriver driver, By locator) {
+        return driver.findElements(locator).size() > 0;
     }
 
 }
