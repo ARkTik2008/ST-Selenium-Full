@@ -27,7 +27,7 @@ public class ProductTest extends BaseTest {
     @Test
     public void ProductTest() {
 
-        
+
             driver.get("http://localhost/litecart/en/");
 
             WebElement productMainPage = driver.findElement(By.cssSelector("#box-campaigns li:first-child"));
@@ -38,17 +38,19 @@ public class ProductTest extends BaseTest {
             String CampaignPriceValueMainPage = CampaignPriceMainPage.getText();
             String ColorOfCampaignPriceMainPage  = CampaignPriceMainPage.getCssValue("color");
             String FontSizeOfCampaignPriceMainPage  = CampaignPriceMainPage.getCssValue("font-size");
-            String FontWeightOfCampaignPriceMainPage  = CampaignPriceMainPage.getCssValue("font-weight");
-
+            String FontWeightOfCampaignPriceMainPageAttr  = CampaignPriceMainPage.getCssValue("font-weight");
+            String FontWeightOfCampaignPriceMainPageTag  = CampaignPriceMainPage.getTagName();
 
             WebElement RegularPriceMainPage = productMainPage.findElement(By.cssSelector(".regular-price"));
             String RegularPriceValueMainPage = RegularPriceMainPage.getText();
             String ColorOfRegularPriceMainPage  = RegularPriceMainPage.getCssValue("color");
             String FontSizeOfRegularPriceMainPage  = RegularPriceMainPage.getCssValue("font-size");
-            String TextDecorationLineOfRegularPriceMainPage  = RegularPriceMainPage.getCssValue("text-decoration-line");//line-through
+            String TextDecorationLineOfRegularPriceMainPageAttr  = RegularPriceMainPage.getCssValue("text-decoration-line");//line-through
+            String TextDecorationLineOfRegularPriceMainPageTag = RegularPriceMainPage.getTagName();
 
 
-            productMainPage.click();
+
+        productMainPage.click();
             String NameProductPage = driver.findElement(By.cssSelector("h1")).getText();
 
             WebElement CampaignPriceProductPage = driver.findElement(By.cssSelector(".campaign-price"));
@@ -56,12 +58,14 @@ public class ProductTest extends BaseTest {
             String ColorOfCampaignPriceProductPage  = CampaignPriceProductPage.getCssValue("color");
             String FontSizeOfCampaignPriceProductPage  = CampaignPriceProductPage.getCssValue("font-size");
             String FontWeightOfCampaignPriceProductPage  = CampaignPriceProductPage.getCssValue("font-weight");
+            String FontWeightOfCampaignPriceProductPageTag  = CampaignPriceProductPage.getTagName();
 
             WebElement RegularPriceProductPage = driver.findElement(By.cssSelector(".regular-price"));
             String RegularPriceValueProductPage = RegularPriceProductPage.getText();
             String ColorOfRegularPriceProductPage  = RegularPriceProductPage.getCssValue("color");
             String FontSizeOfRegularPriceProductPage  = RegularPriceProductPage.getCssValue("font-size");
-            String TextDecorationLineOfRegularPriceProductPage  = RegularPriceProductPage.getCssValue("text-decoration-line");//line-through
+            String TextDecorationLineOfRegularPriceProductPageAttr  = RegularPriceProductPage.getCssValue("text-decoration-line");//line-through
+            String TextDecorationLineOfRegularPriceProductPageTag = RegularPriceProductPage.getTagName();
 
 
             String[] colorRegularMainPage = ColorOfRegularPriceMainPage.split("[^0-9]+");
@@ -86,14 +90,14 @@ public class ProductTest extends BaseTest {
             Assert.assertTrue(Double.parseDouble(fontSizeCampaignProductPage[0]) > Double.parseDouble(fontSizeRegularProductPage[0]));
 
             /**Проверка стиля базовой цены*/
-            Assert.assertTrue(TextDecorationLineOfRegularPriceMainPage.equals("line-through"));
-            Assert.assertTrue(TextDecorationLineOfRegularPriceProductPage.equals("line-through"));
+            Assert.assertTrue(TextDecorationLineOfRegularPriceMainPageAttr.equals("line-through") || TextDecorationLineOfRegularPriceMainPageTag.equals("s"));
+            Assert.assertTrue(TextDecorationLineOfRegularPriceProductPageAttr.equals("line-through") || TextDecorationLineOfRegularPriceProductPageTag.equals("s"));
             Assert.assertTrue(colorRegularMainPage[1].equals(colorRegularMainPage[2]) && colorRegularMainPage[1].equals(colorRegularMainPage[3]));
             Assert.assertTrue(colorRegularProductPage[1].equals(colorRegularProductPage[2]) && colorRegularProductPage[1].equals(colorRegularProductPage[3]));
 
             /**Проверка стиля акционной цены*/
-            Assert.assertTrue(Integer.parseInt(FontWeightOfCampaignPriceMainPage) > 500);
-            Assert.assertTrue(Integer.parseInt(FontWeightOfCampaignPriceProductPage) > 500);
+            Assert.assertTrue(Integer.parseInt(FontWeightOfCampaignPriceMainPageAttr) > 500 || FontWeightOfCampaignPriceMainPageTag.equals("strong"));
+            Assert.assertTrue(Integer.parseInt(FontWeightOfCampaignPriceProductPage) > 500  || FontWeightOfCampaignPriceProductPageTag.equals("strong"));
             Assert.assertTrue(!(colorCampaignProductPage[1].equals("0")) && colorCampaignProductPage[2].equals("0") && colorCampaignProductPage[3].equals("0") );
             Assert.assertTrue(!(colorCampaignMainPage[1].equals("0")) && colorCampaignMainPage[2].equals("0") && colorCampaignMainPage[3].equals("0") );
 
