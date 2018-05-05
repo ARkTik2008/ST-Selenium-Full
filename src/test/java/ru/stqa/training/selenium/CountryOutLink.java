@@ -31,20 +31,6 @@ public class CountryOutLink extends BaseTest {
         OpenCloseNewWindow(driver.findElement(By.xpath("//input[@name = 'phone_code']/../a")));
 
 
-        /*
-
-
-        driver.findElement(By.xpath("//input[@name = 'iso_code_3']/../a"));
-
-        driver.findElement(By.xpath("//input[@name = 'tax_id_format']/../a"));
-
-        driver.findElement(By.xpath("//input[@name = 'address_format']/../a"));
-
-        driver.findElement(By.xpath("//input[@name = 'postcode_format']/../a"));
-
-        driver.findElement(By.xpath("//input[@name = 'currency_code']/../a"));
-
-        driver.findElement(By.xpath("//input[@name = 'phone_code']/../a"));*/
     }
 
     public void OpenCloseNewWindow(WebElement element){
