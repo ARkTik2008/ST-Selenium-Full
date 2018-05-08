@@ -22,14 +22,11 @@ public class CountryOutLink extends BaseTest {
 
         driver.findElement(By.cssSelector("a.button")).click();
 
-        OpenCloseNewWindow(driver.findElement(By.xpath("//input[@name = 'iso_code_2']/../a")));
-        OpenCloseNewWindow(driver.findElement(By.xpath("//input[@name = 'iso_code_3']/../a")));
-        OpenCloseNewWindow(driver.findElement(By.xpath("//input[@name = 'tax_id_format']/../a")));
-        OpenCloseNewWindow(driver.findElement(By.xpath("//textarea[@name = 'address_format']/../a[@target = '_blank']")));
-        OpenCloseNewWindow(driver.findElement(By.xpath("//input[@name = 'postcode_format']/../a")));
-        OpenCloseNewWindow(driver.findElement(By.xpath("//input[@name = 'currency_code']/../a")));
-        OpenCloseNewWindow(driver.findElement(By.xpath("//input[@name = 'phone_code']/../a")));
+        List<WebElement> externalLinks = driver.findElements(By.cssSelector("form a[target = _blank]"));
 
+        for (WebElement externalLink : externalLinks) {
+            OpenCloseNewWindow(externalLink);
+        }
 
     }
 
